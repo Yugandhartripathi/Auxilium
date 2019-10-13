@@ -1,4 +1,4 @@
-package com.hovar.googlelocationbackground;
+package com.hovar.auxilium;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

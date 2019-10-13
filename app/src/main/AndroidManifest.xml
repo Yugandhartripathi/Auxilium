@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hovar.googlelocationbackground">
+    package="com.hovar.auxilium">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -15,12 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <receiver
-            android:name=".MyReceiver"
+            android:name="com.hovar.auxilium.MyReceiver"
             android:enabled="false"
             android:exported="false"></receiver>
-        <receiver android:name=".MyLocationService" />
+        <receiver android:name="com.hovar.auxilium.MyLocationService" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.hovar.auxilium.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
