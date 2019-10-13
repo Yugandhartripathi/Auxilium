@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "720546431770",
+    "firebase_url": "https://auxilium-8c9a9.firebaseio.com",
+    "project_id": "auxilium-8c9a9",
+    "storage_bucket": "auxilium-8c9a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720546431770:android:84e2030c0acbe5742fa2a3",
+        "android_client_info": {
+          "package_name": "com.hovar.googlelocationbackground"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720546431770-4d4k77b580kan4rjd9ugirprlm2ao473.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hovar.googlelocationbackground",
+            "certificate_hash": "3f4351e7f6e2ed4437b06fd80f61c6c3465747fa"
+          }
+        },
+        {
+          "client_id": "720546431770-egq7cli2pgt3t33s5v2ehohk9ob9qcjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtOOFTHKx6rBl5D06o-p3epdtVM4WXApk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720546431770-egq7cli2pgt3t33s5v2ehohk9ob9qcjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

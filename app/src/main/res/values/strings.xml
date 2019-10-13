@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Auxilium</string>
+    <string name="heading">Be Safe!</string>
+    <string name="latitude_longitude">(Latitude, Longitude)</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="add">Add</string>
+    <string name="name">Name</string>
+</resources>
