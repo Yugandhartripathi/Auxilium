@@ -9,8 +9,12 @@ import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +52,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
      private Button mButton;
      private EditText Name;
      private EditText Telefonnummer;
-     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0 ;
 
      public static MainActivity getInstance(){
          return instance;
@@ -56,6 +60,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
      private FirebaseAuth mAuth;
      private FirebaseAnalytics mFirebaseAnalytics;
      FirebaseDatabase mDatabase;
+     private MyReceiver mReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,8 @@ import com.karumi.dexter.listener.single.PermissionListener;
         mDatabase.setPersistenceEnabled(true);
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
+        mReceiver = new MyReceiver (this);
+        registerReceiver(mReceiver, filter);
 
         Name = (EditText)findViewById(R.id.namae);
         Telefonnummer = (EditText)findViewById(R.id.telefonnummer);
@@ -217,4 +224,24 @@ import com.karumi.dexter.listener.single.PermissionListener;
              }
          });
      }
+
+     public void sendSMSMessage() {
+         if (ContextCompat.checkSelfPermission(this,
+                 Manifest.permission.SEND_SMS)
+                 != PackageManager.PERMISSION_GRANTED) {
+             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                     Manifest.permission.SEND_SMS)) {
+             } else {
+                 ActivityCompat.requestPermissions(this,
+                         new String[]{Manifest.permission.SEND_SMS},
+                         MY_PERMISSIONS_REQUEST_SEND_SMS);
+             }
+         }
+         else{
+             SmsManager smsManager = SmsManager.getDefault();
+             smsManager.sendTextMessage("8800210152", null, "Heuristic Time Diff Sent Trigger", null, null);
+             Toast.makeText(getApplicationContext(), "SMS sent. Help On The Way!", Toast.LENGTH_LONG).show();
+         }
+     }
+
  }
