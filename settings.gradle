@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='GoogleLocationBackground'
+rootProject.name='Auxilium'
