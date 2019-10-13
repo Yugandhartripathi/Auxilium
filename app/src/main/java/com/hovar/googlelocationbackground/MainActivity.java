@@ -238,8 +238,46 @@ import com.karumi.dexter.listener.single.PermissionListener;
              }
          }
          else{
-             SmsManager smsManager = SmsManager.getDefault();
-             smsManager.sendTextMessage("8800210152", null, "Heuristic Time Diff Sent Trigger", null, null);
+             final DatabaseReference lklFetch = FirebaseDatabase.getInstance().getReference("locations").child(mAuth.getCurrentUser().getUid());
+             final DatabaseReference contactFetch = FirebaseDatabase.getInstance().getReference("contacts").child(mAuth.getCurrentUser().getUid());
+             lklFetch.addListenerForSingleValueEvent(new ValueEventListener() {
+                 @Override
+                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                     final String latitude = dataSnapshot.child("Latitude").getValue().toString();
+                     final String longitude = dataSnapshot.child("Longitude").getValue().toString();
+                     final String altitude = dataSnapshot.child("Altitude").getValue().toString();
+                     Log.i("FIREBASEREAD",latitude+longitude+altitude);
+                     contactFetch.addListenerForSingleValueEvent(new ValueEventListener() {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                for(DataSnapshot childContacts: dataSnapshot.getChildren()){
+                                    String nomineFB = childContacts.getKey();
+                                    String numerusFB = childContacts.getValue().toString();
+                                    Log.i("FIREBASEREAD2",nomineFB+numerusFB);
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage(numerusFB, null, "Yo "+nomineFB+" need reinforcements at Lat: "+latitude+" - Long: "+longitude+" - Alt: "+altitude+" quick.", null, null);
+                                }
+                             }
+                            else{
+                                Log.i("FIREBASEREAD2alt","Def Helpline");
+                                SmsManager smsManager = SmsManager.getDefault();
+                                smsManager.sendTextMessage("9044125992", null, "Yo, default emergency helpline help at Lat: "+latitude+" - Long: "+longitude+" - Alt: "+altitude+" coz contacts empty", null, null);
+                            }
+                         }
+
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError databaseError) {
+                             Log.e("fbR", databaseError.toString());
+                         }
+                     });
+                 }
+
+                 @Override
+                 public void onCancelled(@NonNull DatabaseError databaseError) {
+                     Log.e("fbR", databaseError.toString());
+                 }
+             });
              Toast.makeText(getApplicationContext(), "SMS sent. Help On The Way!", Toast.LENGTH_LONG).show();
          }
      }
