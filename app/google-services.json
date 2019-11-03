@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:720546431770:android:84e2030c0acbe5742fa2a3",
         "android_client_info": {
-          "package_name": "com.hovar.googlelocationbackground"
+          "package_name": "com.hovar.auxilium"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "720546431770-4d4k77b580kan4rjd9ugirprlm2ao473.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.hovar.googlelocationbackground",
+            "package_name": "com.hovar.auxilium",
             "certificate_hash": "3f4351e7f6e2ed4437b06fd80f61c6c3465747fa"
           }
         },

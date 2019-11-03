@@ -1,4 +1,4 @@
-package com.hovar.googlelocationbackground;
+package com.hovar.auxilium;
 
 
 import android.content.BroadcastReceiver;
@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.location.Location;
 
 import android.util.Log;
-import android.view.KeyEvent;
 import android.widget.Toast;
 
 
@@ -19,8 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MyLocationService extends BroadcastReceiver {
 
-    public static final String ACTION_PROCESS_UPDATE="com.hovar.googlelocationbackground.UPDATE_LOCATION";
-    public static final String ACTION_AUTHOR_UPDATE="com.hovar.googlelocationbackground.UPDATE_AUTHOR";
+    public static final String ACTION_PROCESS_UPDATE="com.hovar.auxilium.UPDATE_LOCATION";
+    public static final String ACTION_AUTHOR_UPDATE="com.hovar.auxilium.UPDATE_AUTHOR";
     SharedPreferences sharedpreferences;
 
     public static boolean testt = false;
