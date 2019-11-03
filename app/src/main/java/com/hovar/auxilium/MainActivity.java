@@ -59,6 +59,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
      private FirebaseAnalytics mFirebaseAnalytics;
      FirebaseDatabase mDatabase;
      private MyReceiver mReceiver;
+     public boolean rescue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,8 @@ import com.karumi.dexter.listener.single.PermissionListener;
             {
                 String nomine = Name.getText().toString();
                 String numerus = Telefonnummer.getText().toString();
+                Name.setText("");
+                Telefonnummer.setText("");
                 Log.i("Button", nomine);
                 Log.i("Button", "Button Clicked");
                 Log.i("Button", numerus);
@@ -136,6 +139,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
                     }
                 }).check();
+        rescue = true;
     }
 
      @Override
@@ -254,8 +258,20 @@ import com.karumi.dexter.listener.single.PermissionListener;
                                     String numerusFB = childContacts.getValue().toString();
                                     Log.i("FIREBASEREAD2",nomineFB+numerusFB);
                                     SmsManager smsManager = SmsManager.getDefault();
-                                    smsManager.sendTextMessage(numerusFB, null, "Yo "+nomineFB+" need reinforcements at Lat: "+latitude+" - Long: "+longitude+" - Alt: "+altitude+" quick.", null, null);
+                                    if(rescue) {
+                                        smsManager.sendTextMessage(numerusFB, null, "HI, " + nomineFB + ", I am in distress and I need medical assistance at Lat: " + latitude + " - Long: " + longitude + " - Alt: " + altitude + " quick.", null, null);
+                                    }
+                                    else{
+                                        smsManager.sendTextMessage(numerusFB, null, "HI, " + nomineFB + ", I got rescued and now I am at Lat: " + latitude + " - Long: " + longitude + " - Alt: " + altitude , null, null);
+                                    }
                                 }
+                                if(rescue) {
+                                    Toast.makeText(getApplicationContext(), "SMS sent. Help On The Way!", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "SMS sent. Rescued!", Toast.LENGTH_LONG).show();
+                                }
+                                rescue = !rescue;
                              }
                             else{
                                 Log.i("FIREBASEREAD2alt","Def Helpline");
@@ -276,7 +292,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
                      Log.e("fbR", databaseError.toString());
                  }
              });
-             Toast.makeText(getApplicationContext(), "SMS sent. Help On The Way!", Toast.LENGTH_LONG).show();
          }
      }
 

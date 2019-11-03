@@ -19,7 +19,7 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //Log.v("onReceive", "Power button is pressed.");
+        Log.v("onReceive", "Power button is pressed.");
 
         //Toast.makeText(context, "power button clicked", Toast.LENGTH_LONG).show();
 
