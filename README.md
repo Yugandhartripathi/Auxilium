@@ -14,10 +14,10 @@ All of these require just simple taps on power and/or volume buttons.
 2) Contacting someone's guardians by using their mobile's power button or volume key combination. Thus even if someone is out cold we can use their mobile and contact their family without actually revealing the MobileNumber and other details to strangers.
 
 ### Tech Stack: 
-Android Studio
-Java
-Firebase API(for real-time database and analytics services)
-Geo-Location API(android gms play services) for location data(latitude, longitude, altitude).
+- Android Studio
+- Java
+- Firebase API(for real-time database and analytics services)
+- Geo-Location API(android gms play services) for location data(latitude, longitude, altitude).
 
 ### Challenges and short comings:
 Assumption that mobile phone after accident doesn't lose power(mere screen damage won't hurt)
